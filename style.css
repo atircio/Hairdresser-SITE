@@ -1,0 +1,571 @@
+
+/* ! =============== RESET ==============*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+/* ? =============== VARIABLES-CSS ==============*/
+
+:root{
+    --header-heigth: 4.5rem;
+
+
+    /*COLORS*/
+
+    --hue:159;
+    /*! HSL color mode*/
+    --base-color: hsl(var(--hue) 36% 57%);
+    --base-color-second: hsl(var(--hue) 65% 88%);
+    --base-color-alt: hsl(var(--hue) 57% 53%);
+    --title-color: hsl(var(--hue) 41% 10%);
+    --text-color: hsl( 0 0% 46%);
+    --text-color-ligth: hsl( 0 0% 98%);
+    --body-color: hsl( 0 0% 98%);
+    /*fonts*/
+    --title-font-size: 1.875rem;
+    --subtitle-font-size: 1rem;
+}
+
+/* ? =============== BASE ==============*/
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font: 400 1rem 'DM Sans', sans-serif;
+
+    color: var(--text-color);
+    background: var(--body-color);
+
+    
+
+
+}
+
+.title{
+    font: 700 1.87rem 'Poppins', sans-serif;
+    color: var(--title-color);
+}
+
+.button{
+    display: inline-flex;
+    background-color: var(--base-color);
+    color: var(--text-color-ligth);
+    height: 3.5rem;
+
+    align-items: center;
+
+    padding: 0 2rem;
+    border-radius: .25rem;
+
+    font: 500 1rem 'DM Sans', sans-serif;
+
+    transition: background .3s;
+}
+
+.button:hover{
+    background: var(--base-color-alt);
+}
+
+.divider-1{
+    height: 1px;
+    background: linear-gradient(
+        270deg,
+        hsla(var(--hue), 36%, 57%, 1) 0%,
+        hsla(var(--hue), 65%, 88%, 0.34) 100%
+    );
+}
+
+.divider-2{
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        hsla(var(--hue), 36%, 57%, 1) 0%,
+        hsla(var(--hue), 65%, 88%, 0.34) 100%
+    );
+}
+
+/* ? =============== Leyout ==============*/
+.container{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+
+    
+        
+}
+    
+.section {
+    padding: calc(5rem + var(--header-heigth)) 0;
+}
+
+.section .title{
+    margin-bottom: 1rem;
+}
+
+.section .subtitle{
+    font-size: var(--subtitle-font-size);
+}
+
+.section header{
+    margin-bottom: 4rem;
+}
+
+.section header p strong{
+    color: var(--base-color);
+}
+    
+.grid{
+    display: grid;
+    gap: 2rem;
+}
+    
+#header{
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 2rem;
+
+    display: flex;
+    width: 100%;
+    position: fixed;
+
+    z-index: 100;
+    top: 0;
+    left: 0;
+
+    background-color: var(--body-color);
+
+    
+}
+
+#header.scroll{
+    box-shadow:
+  0 2.6px 2.2px rgba(0, 0, 0, 0.011),
+  0 6.3px 5.3px rgba(0, 0, 0, 0.017),
+  0 11.8px 10px rgba(0, 0, 0, 0.022),
+  0 21px 17.9px rgba(0, 0, 0, 0.025),
+  0 39.3px 33.4px rgba(0, 0, 0, 0.029),
+  0 94px 80px rgba(0, 0, 0, 0.04)
+;
+}
+
+
+
+/* ? =============== LOGO ==============*/
+
+.logo{
+    font: 700 1.31rem 'Poppins', sans-serif;
+    color: var(--title-color);
+}
+
+.logo span{
+    color: var(--base-color);
+}
+
+.logo-alt span{
+    color: var(--body-color);
+}
+/* ? =============== Navegatiom ==============*/
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-heigth);
+
+    width: 100%;
+}
+
+
+
+nav ul li{
+    text-align: center;
+}
+
+nav ul li a{
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:hover{
+    color: var(--base-color);
+}
+
+nav ul li a::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+
+    background: var(--base-color);
+
+    position: absolute;
+    left: 0;
+    bottom: -1.5rem;
+
+    transition: width .3457s;
+
+    
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+}
+nav .menu{
+    opacity: 0;
+    visibility: hidden;
+    
+    top: -20rem;
+    transition: .4s;
+}
+
+nav .menu ul{
+    display: none;
+}
+
+/*MOSTRAR MENU*/
+nav.show .menu{
+    opacity: 1;
+    visibility: visible;
+
+    background: var(--body-color);
+
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    place-content: center;
+}
+
+
+
+nav.show .menu ul{
+    display: grid;
+}
+
+nav.show ul.grid{ 
+    gap: 4rem;
+}
+
+
+/*TODO----- toogle menu*/
+
+.toggle{
+    color: var(--base-color) ;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+nav .icon-close{
+    visibility: hidden;
+    opacity: 0;
+
+    /*Posicionamento*/
+    position: absolute;
+    right: 1.5rem;
+    top: -1.5rem;
+
+    /*Transition to Open*/
+
+    transition: .4s;
+}
+
+nav.show div.icon-close{
+    opacity: 1;
+    visibility: visible;
+    top: 1.5rem;
+
+}
+
+
+
+
+
+/* ? =============== HOME ==============*/
+
+#home{
+    overflow: hidden;
+}
+
+#home .container{
+    
+    margin: 0 1.5rem;
+}
+
+#home .image{
+    position: relative;
+}
+
+#home .image::before{
+    content: '';
+
+    height: 100%;
+    width: 100%;
+    
+
+    background: var(--base-color-second) ;
+    position: absolute;
+    top: -16.8%;
+    left: 16.7%;
+    z-index: 0;
+
+
+
+    
+
+}
+
+#home .image > img{
+    position: relative;
+    right: 2.93rem;
+}
+
+#home .image > img,#home .image::before{
+    border-radius: .25rem;
+}
+
+#home .text{
+    margin: 0 1.5rem;
+    text-align: center;
+}
+
+#home .text h2{
+    margin-bottom: 1rem;
+}
+
+#home .text p{
+    margin-bottom: 2rem;
+    max-width: 100%;
+    
+}
+
+/* ? =============== ABOUT ==============*/
+
+#about {
+    background: white;
+}
+
+#about .container{
+    
+    margin: 0 1.5rem;
+}
+
+#about .image{
+    position: relative;
+}
+
+#about .image::before{
+    content: '';
+
+    height: 100%;
+    width: 100%;
+    
+
+    background: var(--base-color-second) ;
+    position: absolute;
+    top: -8.3%;
+    left: -33%;
+    z-index: 0;
+
+
+
+    
+
+}
+
+#about .image > img{
+    position: relative;
+    right: 2.93rem;
+}
+
+#about .image > img,#about .image::before{
+    border-radius: .25rem;
+}
+
+#about .text{
+    margin: 0 1.5rem;
+}
+
+#about .text h2{
+    margin-bottom: 1rem;
+}
+
+#about .text p{
+    margin-bottom: 2rem;
+    max-width: 100%;
+    
+}
+
+
+/* ? =============== SERVICES ==============*/
+
+.cards.grid{
+    gap: 1.5rem;
+}
+
+.card{
+    padding: 3.625rem 2rem;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.08);
+    border-bottom: .25rem solid var(--base-color);
+    border-radius: .25rem .25rem 0 0;
+    text-align: center;
+}
+
+.card i{
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 5rem;
+    color: var(--base-color);
+}
+
+.card .title{
+    font-size: 1.5rem;
+    margin-bottom: .75rem;
+}
+
+/* ? =============== TESTIMONIALS ==============*/
+
+#testimonials{ 
+    background: white;
+}
+
+#testimonials blockquote{
+    padding: 2rem;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 0.25rem;
+
+
+}
+
+#testimonials blockquote p{
+    position: relative;
+    text-indent: 1.875rem;
+    margin-bottom: 1.5rem;
+    color: var(--title-color);
+}
+#testimonials blockquote p span{
+
+    font: 700 3rem serif;
+    position: absolute;
+    top: -0.5rem;
+    left: -1.875rem;
+    color: var(--base-color);
+}
+
+#testimonials cite{
+    display: flex;
+    align-items: center;
+}
+
+#testimonials cite img{
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+
+    object-fit: cover;
+    clip-path: circle();
+
+}
+
+/* ? =============== CONTACT ==============*/
+
+#contact grid{
+    gap: 4rem;
+}
+
+#contact .text p{
+    margin-bottom: 2rem;
+}
+
+#contact .button i, #contact ul  li i{
+    font-size: 1.5rem;
+    margin-right: .625rem;
+}
+
+#contact ul  li{
+    display: flex;
+    align-items: center;
+}
+
+#contact ul li i{
+    color: var(--base-color);
+}
+
+
+#contact ul.grid {
+    gap: 2rem;
+}
+
+/* ? =============== FOOTER ==============*/
+
+footer{
+    background: var(--base-color);
+}
+
+footer.section{
+    padding: 4rem 0;
+}
+
+footer .logo{
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+footer .brand p{
+    color: var(--text-color-ligth);
+    margin-bottom: .75rem ;
+}
+
+footer .social i{
+    font-size: 1.5rem;
+    color: var(--text-color-ligth);
+}
+
+footer .social a{
+    margin-right: 2rem;
+}
+
+/*back to top*/
+.back-to-top{
+    color: var(--base-color);
+    position: fixed;
+
+    right: 1.5rem;
+    bottom: 1.5rem;
+
+    font-size: 2rem;
+}
+
+/*TODO ----RESPONSIVE----------*/
+
+@media (min-width: 992px){
+    :root{
+        --title-font-size: 2.25rem;
+        --subtitle-font-size: 1.125rem;
+    }
+}
+
+@media (min-width: 1200px){
+    main{
+        margin-top: var(--header-heigth);
+    }
+}
+
